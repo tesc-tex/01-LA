@@ -1,1 +1,48 @@
+\newcommand{\Group}{\mathit{G}}
+\newcommand{\Field}{\mathit{F}}
 
+\newcommand{\basis}{\mathbbold{e}}
+\newcommand{\Basis}{\mathcal{E}}
+
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\dist}{dist}
+
+\newcommand{\ecc}{e}
+\newcommand{\collinear}{\upuparrows}
+
+\newcommand{\dotpdt}[2]{\left(#1; #2\right)}
+\newcommand{\dotpdtv}[2]{\dotpdt{\vec{#1}}{\vec{#2}}}
+\newcommand{\vecpdt}[2]{#1 \times #2}
+\newcommand{\vecpdtv}[2]{\vecpdt{\vec{#1}}{\vec{#2}}}
+
+\newcommand{\tplpdt}[3]{#1 #2 #3}
+\newcommand{\tplpdtv}[3]{\tplpdt{\vec{#1}}{\vec{#2}}{\vec{#3}}}
+\newcommand{\proj}[2]{\text{пр}_{#2} #1}
+\newcommand{\projv}[2]{\proj{\vec{#1}}{\vec{#2}}}
+
+\newcommand{\point}[1]{\draw[fill = black] (#1) circle (1pt);}
+
+\tikzset{>=stealth}
+\pgfplotsset{compat = 1.8}
+\tikzexternalize
+
+\tikzset{%
+  external/system call = {%
+    pdflatex
+    -shell-escape
+    -halt-on-error
+    -interaction=batchmode
+    -output-directory=build
+    -jobname
+    "\image"
+    "\texsource"
+  }
+}
+
+\makeatletter
+\tikzoption{canvas is xy plane at z}[]{%
+    \def\tikz@plane@origin{\pgfpointxyz{0}{0}{#1}}%
+    \def\tikz@plane@x{\pgfpointxyz{1}{0}{#1}}%
+    \def\tikz@plane@y{\pgfpointxyz{0}{1}{#1}}%
+    \tikz@canvas@is@plane}
+\makeatother
